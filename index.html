@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEK KHODAM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cek Khodam Online</h1>
+        <form id="khodamForm">
+            <input type="text" id="nama" placeholder="Masukkan Nama Anda" required>
+            <button type="submit">Pilih Khodam</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+    <div class="copyright">
+        <p>Copyright 2024 | PrimeeSTD</p>
+    </div>
+
+    <script>
+        const khodamList = [
+            "khodam macan putih",
+            "khodam marsha adidas",
+            "khodam badut",
+            "khodam kambing amazon",
+            "khodam tuyul mulet",
+            "khodam ikan kerapu",
+            "khodam singa paddle pop",
+            "khodam ayam geprek",
+            "khodam banteng merah",
+            "khodam siluman kadal",
+        ];
+
+        function pilihKhodam(event) {
+            event.preventDefault();
+            const nama = document.getElementById("nama").value;
+            const resultDiv = document.getElementById("result");
+            resultDiv.textContent = "";
+            if (nama) {
+                const randomIndex = Math.floor(Math.random() * khodamList.length);
+                const khodamTerpilih = khodamList[randomIndex];
+                resultDiv.textContent = `Nama anda adalah ${nama} dan khodam anda adalah ${khodamTerpilih}`;
+
+                setTimeout(() => {
+                    resultDiv.textContent = "";
+                }, 5000);
+            }
+            else {
+                resultDiv.textContent = "Nama tidak boleh kosong";
+            }
+        }
+
+        document.getElementById("khodamForm").addEventListener("submit", pilihKhodam);
+    </script>
+</body>
+</html>
